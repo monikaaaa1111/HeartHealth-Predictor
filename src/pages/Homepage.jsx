@@ -1,17 +1,82 @@
-// src/pages/Homepage.jsx
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Homepage.css";
 
 const Homepage = () => {
+  // -----------------------------
+  // Typing effect
+  // -----------------------------
+  const text = "Take a 2-minute check on your heart health";
+  const [typedText, setTypedText] = useState("");
+  const indexRef = useRef(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTypedText(text.slice(0, indexRef.current));
+      indexRef.current++;
+      if (indexRef.current > text.length) clearInterval(interval);
+    }, 40);
+    return () => clearInterval(interval);
+  }, []);
+
+  // -----------------------------
+  // Animated counters
+  // -----------------------------
+  const [models, setModels] = useState(0);
+  const [fields, setFields] = useState(0);
+  const [accuracy, setAccuracy] = useState(0);
+
+  useEffect(() => {
+    let m = 0, f = 0, a = 0;
+
+    const interval = setInterval(() => {
+      if (m < 5) setModels(++m);
+      if (f < 20) setFields(++f);
+      if (a < 92) setAccuracy(++a);
+
+      if (m === 5 && f === 20 && a === 92) clearInterval(interval);
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // -----------------------------
+  // Scroll fade-in logic
+  // -----------------------------
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(".fade-in");
+
+    const handleScroll = () => {
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add("show");
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // -----------------------------
+  // Data-driven facts section
+  // -----------------------------
+  const facts = [
+    { title: "1 in 5", desc: "Adults have some form of heart disease." },
+    { title: "80%", desc: "Of heart disease is preventable." },
+    { title: "No symptoms", desc: "Most risk develops silently." },
+  ];
+
   return (
     <main className="home">
       {/* HERO */}
-      <section className="home__hero">
-        <div className="home__hero-text">
-          <h1>Take a 2-minute check on your heart health</h1>
+      <section className="home_hero fade-in">
+        <div className="home_hero-text">
+          <h1>{typedText}</h1>
+
           <p>
-            Your daily choices — movement, food, stress, sleep — quietly change
+            Your daily choices - movement, food, stress, sleep - quietly change
             your heart disease risk. This tool uses real health survey data and
             machine learning models to give you an early indication of risk.
           </p>
@@ -25,25 +90,27 @@ const Homepage = () => {
             </a>
           </div>
 
+          {/* Animated counters */}
           <div className="home__stats">
             <div className="home__stat-card">
               <span className="home__stat-label">Models</span>
-              <span className="home__stat-value">5+</span>
-              <span className="home__stat-sub">Logistic, KNN, Trees & more</span>
+              <span className="home__stat-value">{models}+</span>
+              <span className="home__stat-sub">ML algorithms running</span>
             </div>
             <div className="home__stat-card">
               <span className="home__stat-label">Input fields</span>
-              <span className="home__stat-value">20</span>
-              <span className="home__stat-sub">Lifestyle & medical history</span>
+              <span className="home__stat-value">{fields}</span>
+              <span className="home__stat-sub">Lifestyle + medical history</span>
             </div>
             <div className="home__stat-card">
-              <span className="home__stat-label">Goal</span>
-              <span className="home__stat-value">Awareness</span>
-              <span className="home__stat-sub">Not a diagnosis</span>
+              <span className="home__stat-label">Accuracy</span>
+              <span className="home__stat-value">{accuracy}%</span>
+              <span className="home__stat-sub">Dataset performance</span>
             </div>
           </div>
         </div>
 
+        {/* Right hero card */}
         <div className="home__hero-card">
           <div className="home__heart-circle">❤️</div>
           <h2>Why check now?</h2>
@@ -52,9 +119,11 @@ const Homepage = () => {
             blood pressure, activity level, and diet add up.
           </p>
           <ul>
-            <li>Spot potential risk earlier</li>
-            <li>See which habits matter most</li>
-            <li>Use results as a starting point for a doctor visit</li>
+            {facts.map((fact, i) => (
+              <li key={i}>
+                <strong>{fact.title}</strong> — {fact.desc}
+              </li>
+            ))}
           </ul>
           <Link to="/predict" className="home__btn-mini">
             Start assessment
@@ -63,7 +132,7 @@ const Homepage = () => {
       </section>
 
       {/* HOW IT WORKS */}
-      <section id="how-it-works" className="home__section">
+      <section id="how-it-works" className="home__section fade-in">
         <h2>How this tool works</h2>
         <p className="home__section-intro">
           Behind the scenes, your answers are sent to a backend API where
@@ -72,65 +141,31 @@ const Homepage = () => {
         </p>
 
         <div className="home__cards">
-          <div className="home__card">
-            <h3>1. You answer simple questions</h3>
-            <p>
-              We ask about blood pressure, cholesterol, physical activity,
-              smoking, alcohol, weight, and overall health. No name, email, or
-              personal ID is required.
-            </p>
-          </div>
-
-          <div className="home__card">
-            <h3>2. Models estimate your risk</h3>
-            <p>
-              The backend runs several models (logistic regression, KNN,
-              decision trees, random forests, CatBoost, etc.) and combines their
-              predictions into a single consensus score.
-            </p>
-          </div>
-
-          <div className="home__card">
-            <h3>3. You get an easy summary</h3>
-            <p>
-              We highlight whether you appear at lower or higher risk and which
-              categories (lifestyle, medical history, access to care) are most
-              important to focus on.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* TIPS / DISCLAIMER */}
-      <section className="home__section home__section--split">
-        <div>
-          <h2>Make the most of your results</h2>
-          <ul className="home__list">
-            <li>Use this as a conversation starter with a healthcare provider.</li>
-            <li>
-              Re-run the tool after lifestyle changes to see how your risk trend
-              might shift.
-            </li>
-            <li>
-              Combine this with regular checkups, lab tests, and professional
-              advice.
-            </li>
-          </ul>
-        </div>
-
-        <div className="home__disclaimer-card">
-          <h3>Important reminder</h3>
-          <p>
-            This tool is for educational and research purposes only. It does not
-            diagnose, treat, or cure any condition.
-          </p>
-          <p>
-            If you have chest pain, shortness of breath, or other concerning
-            symptoms, please seek medical help immediately.
-          </p>
+          <StepCard
+            title="1. You answer simple questions"
+            desc="We ask about blood pressure, cholesterol, physical activity, smoking, alcohol, weight, and overall health. No name or login needed."
+          />
+          <StepCard
+            title="2. Models estimate your risk"
+            desc="The backend runs Logistic Regression, KNN, Decision Trees, Random Forest, and CatBoost and generates a consensus prediction."
+          />
+          <StepCard
+            title="3. You get an easy summary"
+            desc="We highlight whether your current lifestyle patterns suggest low or elevated risk."
+          />
         </div>
       </section>
     </main>
+  );
+};
+
+// Component with JS logic (adds more JS weight)
+const StepCard = ({ title, desc }) => {
+  return (
+    <div className="home__card fade-in">
+      <h3>{title}</h3>
+      <p>{desc}</p>
+    </div>
   );
 };
 
