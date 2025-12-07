@@ -1,0 +1,251 @@
+.home {
+  padding: 2rem 2.5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* HERO */
+.home__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.home__hero-text h1 {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  color: #111827;
+}
+
+.home__hero-text p {
+  color: #4b5563;
+  margin-bottom: 1.25rem;
+  max-width: 34rem;
+}
+
+/* Hero actions */
+.home__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.home__btn {
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.home__btn--primary {
+  background: #d7263d;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(215, 38, 61, 0.4);
+}
+
+.home__btn--primary:hover {
+  background: #b61f33;
+}
+
+.home__btn--ghost {
+  background: #ffffff;
+  color: #111827;
+  border-color: #e5e7eb;
+}
+
+.home__btn--ghost:hover {
+  background: #f9fafb;
+}
+
+/* Stats */
+.home__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.home__stat-card {
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.9rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.home__stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+}
+
+.home__stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+  color: #111827;
+}
+
+.home__stat-sub {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* Right hero card */
+.home__hero-card {
+  background: radial-gradient(circle at top left, #fee2e2 0, #ffffff 55%);
+  border-radius: 1.4rem;
+  padding: 1.5rem 1.6rem 1.7rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+  border: 1px solid #fee2e2;
+}
+
+.home__heart-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(248, 113, 113, 0.5);
+  margin-bottom: 0.9rem;
+  font-size: 1.7rem;
+}
+
+.home__hero-card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.3rem;
+  color: #111827;
+}
+
+.home__hero-card p {
+  color: #4b5563;
+  font-size: 0.94rem;
+  margin-bottom: 0.7rem;
+}
+
+.home__hero-card ul {
+  padding-left: 1.1rem;
+  margin: 0 0 0.9rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.home__hero-card li + li {
+  margin-top: 0.3rem;
+}
+
+.home__btn-mini {
+  display: inline-flex;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: #111827;
+  color: #ffffff;
+}
+
+/* Generic sections */
+.home__section {
+  margin-bottom: 2.75rem;
+}
+
+.home__section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.home__section-intro {
+  color: #4b5563;
+  margin-bottom: 1.4rem;
+  max-width: 40rem;
+}
+
+/* Cards */
+.home__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+}
+
+.home__card {
+  padding: 1.1rem 1.15rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+}
+
+.home__card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.home__card p {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* Split section */
+.home__section--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+  gap: 1.8rem;
+  align-items: flex-start;
+}
+
+.home__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #4b5563;
+  font-size: 0.92rem;
+}
+
+.home__list li + li {
+  margin-top: 0.4rem;
+}
+
+/* Disclaimer card */
+.home__disclaimer-card {
+  padding: 1.1rem 1.1rem 1.2rem;
+  border-radius: 1rem;
+  background: #fff7e6;
+  border: 1px solid #fed7aa;
+  font-size: 0.9rem;
+  color: #92400e;
+}
+
+.home__disclaimer-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .home__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .home__section--split {
+    grid-template-columns: 1fr;
+  }
+
+  .home {
+    padding: 1.7rem 1.4rem 2.6rem;
+  }
+}

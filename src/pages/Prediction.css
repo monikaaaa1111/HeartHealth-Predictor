@@ -1,0 +1,206 @@
+/* Layout */
+.predict {
+  padding: 2rem 2.5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.predict__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* Left side */
+.predict__intro h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.75rem;
+  color: #222;
+}
+
+.predict__intro p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.predict__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  color: #444;
+}
+
+.predict__bullets li {
+  margin-bottom: 0.4rem;
+}
+
+.predict__disclaimer {
+  font-size: 0.85rem;
+  color: #666;
+  background: #fff7e6;
+  border: 1px solid #ffe0a3;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.6rem;
+}
+
+/* Right card */
+.predict__card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem 1.75rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid #f1f1f1;
+}
+
+.predict__card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Sections */
+.predict__section {
+  margin-top: 1.25rem;
+}
+
+.predict__section h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+/* Grid for fields */
+.predict__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.9rem 1rem;
+}
+
+/* Fields */
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.field label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d3d3d3;
+  font-size: 0.9rem;
+  background: #fafafa;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #d7263d;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(215, 38, 61, 0.08);
+}
+
+.field small {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.15rem;
+}
+
+/* Yes / No radios */
+.field__yesno {
+  display: inline-flex;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.field__yesno label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Button */
+.predict__button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.98rem;
+  font-weight: 600;
+  background: #d7263d;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease,
+    box-shadow 0.1s ease;
+}
+
+.predict__button:hover:not(:disabled) {
+  background: #b61f33;
+  box-shadow: 0 6px 18px rgba(215, 38, 61, 0.28);
+}
+
+.predict__button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(215, 38, 61, 0.2);
+}
+
+.predict__button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* Error + result */
+.predict__error {
+  margin-top: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.5rem;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 0.85rem;
+}
+
+.predict__result {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e4e4e4;
+  font-size: 0.9rem;
+}
+
+.predict__result-label {
+  margin-bottom: 0.5rem;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge--high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.badge--low {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* Responsive */
+@media (max-width: 840px) {
+  .predict__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
